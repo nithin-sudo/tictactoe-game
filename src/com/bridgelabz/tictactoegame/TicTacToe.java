@@ -104,18 +104,21 @@ public class TicTacToe {
         System.out.println("toss is :" + toss);
         System.out.println("choose your choice 1.head 2.tail");
         int choice = scanner.nextInt();
-        if (choice == 1)
-        {
-            System.out.println("player's turn");
-        }
-        else if (choice == 2)
-        {
-                System.out.println("computer's turn");
-        }
+        int x;
+        if(toss==choice)
+            x=1;
         else
-        {
-            System.out.println("invalid input ");
-            whoPlaysFirst();
+            x=0;
+        switch (x) {
+            case 1:
+                System.out.println("player's turn");
+                break;
+            case 0:
+                System.out.println("computer's turn");
+                break;
+            default:
+                System.out.println("invalid input");
+                whoPlaysFirst();
         }
     }
 }
