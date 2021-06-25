@@ -10,6 +10,7 @@ public class TicTacToe {
      */
     public static void main(String[] args) {
         System.out.println("Welcome to tic tac toe game");
+        whoPlaysFirst();
         createBoard();
         userOption();
         displayBoard();
@@ -93,6 +94,28 @@ public class TicTacToe {
         {
             System.out.println("Invalid input");
             desiredUSerMove();
+        }
+    }
+    /**
+     * doing a toss to check who is going to play first.
+     */
+    public static void whoPlaysFirst() {
+        double toss = (Math.floor(Math.random() * 10) % 2)+1;
+        System.out.println("toss is :" + toss);
+        System.out.println("choose your choice 1.head 2.tail");
+        int choice = scanner.nextInt();
+        if (choice == 1)
+        {
+            System.out.println("player's turn");
+        }
+        else if (choice == 2)
+        {
+                System.out.println("computer's turn");
+        }
+        else
+        {
+            System.out.println("invalid input ");
+            whoPlaysFirst();
         }
     }
 }
