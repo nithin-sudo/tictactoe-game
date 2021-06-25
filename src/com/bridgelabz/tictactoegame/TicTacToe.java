@@ -1,7 +1,8 @@
 package com.bridgelabz.tictactoegame;
 import java.util.Scanner;
 public class TicTacToe {
-    Scanner scanner = new Scanner(System.in);
+    public static Scanner scanner = new Scanner(System.in);
+    public static char userChoice;
     public static char[] board;
     /**
      * Printing the welcome message and calling the methods from main.
@@ -13,6 +14,7 @@ public class TicTacToe {
         userOption();
         displayBoard();
         indexBoard();
+        desiredUSerMove();
     }
     /**
      * Creating board with empty spaces.
@@ -31,7 +33,7 @@ public class TicTacToe {
     private static void userOption(){
         System.out.println("Choose between x or o : ");
         Scanner scanner = new Scanner(System.in);
-        char userChoice=scanner.next().charAt(0);
+        userChoice=scanner.next().charAt(0);
         char computerChoice;
         if (userChoice == 'x' || userChoice == 'o') {
             if (userChoice == 'x') {
@@ -65,14 +67,32 @@ public class TicTacToe {
      */
     private static void indexBoard(){
         System.out.println("choose the number where you want to enter your character:");
-        int REDIX=10;
+        int lastNumber=10;
         System.out.println("\n");
         for( int i=1; i<10; i++)
         {
             if (board[i] !='x' && board[i] !='o') {
-                board[i] = Character.forDigit(i, REDIX);
+                board[i] = Character.forDigit(i, lastNumber);
             }
         }
         displayBoard();
+    }
+    /**
+     * Taking input from user and assigning user choice to the number in the index board accordingly.
+     */
+    public static void desiredUSerMove() {
+        System.out.println("\nEnter a slot number between 1 and 9 :\n");
+        int chooseNumber=scanner.nextInt();
+        if (chooseNumber > 0 && chooseNumber <= 9 && board[chooseNumber]!='x' && board[chooseNumber]!='o')
+        {
+            board[chooseNumber]=userChoice;
+            System.out.println(board[chooseNumber]);
+            indexBoard();
+        }
+        else
+        {
+            System.out.println("Invalid input");
+            desiredUSerMove();
+        }
     }
 }
