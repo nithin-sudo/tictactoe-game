@@ -7,17 +7,18 @@ public class TicTacToe {
      * Printing a welcome message and calling createBoard method.
      * @param args
      */
+    public static char[] board=new char[10];
     public static void main(String[] args) {
         System.out.println("Welcome to tic tac toe game");
         createBoard();
         userOption();
+        displayBoard();
     }
     /**
      * Creating board with empty spaces.
      * @return
      */
     private static char[] createBoard(){
-        char[] board=new char[10];
         for(int i=1;i<board.length;i++){
             board[i]='-';
         }
@@ -45,5 +46,17 @@ public class TicTacToe {
             System.out.println("Enter only x or o");
             userOption();
         }
+    }
+    /**
+     * displaying the current board.
+     */
+    private static void displayBoard()
+    {
+        System.out.println("The Current Board is:");
+        System.out.println("| " + board[1] + " | "+ board[2] + " | " + board[3]+ " |");
+        System.out.println("|-----------|");
+        System.out.println("| " + board[4] + " | "+ board[5] + " | " + board[6]+ " |");
+        System.out.println("|-----------|");
+        System.out.println("| " + board[7] + " | "+ board[8] + " | " + board[9]+ " |");
     }
 }
